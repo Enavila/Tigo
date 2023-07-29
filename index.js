@@ -1,67 +1,4 @@
-/*
-Proyecto de JavaScript - Grupo 9
-
-Fecha de inicio: 16/Julio/2023
-Fecha de entrega 29/Julio/2023 (10:00 AM)
-
-
-Enunciado:
-    Crea un simulador de tienda en línea que permita a los usuarios agregar 
-    productos a un carrito de compras, realizar compras, calcular el total de 
-    la compra y generar una factura - Virtual. 
-
-
-Requisitos y funcionalidad:
-    Los usuarios deberán poder navegar por diferentes categorías de productos, 
-    ver detalles de cada producto, agregar o eliminar elementos del carrito y 
-    completar el proceso de compra.
-
-    
-Debe existir una cuadricula de productos por cada una de las siguientes categorias y subcategorias:
-
-- Hogar: Muebleria, Cocina.
-- Alimentos: Bebidas (no alcoholicas), Viveres, Dulces.
-- Tecnologia: Computacion, Telefonia.
-- Vestuario: Hombre, Mujer, Niños.
-
-Deben existir al menos 8 productos por subgategoria.
-
-
-Estuctura y visualizacion:
-
--   Todos los productos deben estar en un unico archivo HTML, y ser de facil acceso desde segun su categoria desde 
-    un menu de navegacion anclado bien sea en la parte superior, izquierda o derecha de la pantalla.
-
--   Cada producto debe estar dentro de un contenedor (div)  que muestre su nombre, precio, y cantidad disponible,
-    ademas de dos botones, un boton que permita ver su descripcion al ser presionado (Bien sea como un alert o en un elemendo del DOM)
-    y un boton de añadir que permita agregar el producto al carrito.
-
--   Al final de cada pagina debe existir un boton que diga comprar, y muestre una factura con los detalles de la compra luego de 3 segundos,
-    los cuales deben ser, nombre cada producto, cantidad de productos, precio total sin iva (se resta el 16% del precio final), precio total con iva.
-    NOTA: en el lapso de tiempo de 3 segundos debe aparecer un mensaje que diga: "Generando factura".
-
--  Cuando la compra finalce debe aparecer un mensaje en pantalla en el cual se pregunte si se desea realizar una nueva compra, y reiniciar el proceso.
-
-
--   NOTA: deberas usar variables, selectores, eventos, arrays, objetos, funciones, metodos de array, operadores aritmeticos, de asignacion, comparativos y logicos
-    loops, condicionales, manejar el DOM, iterar.
-
--   Debe ser responsive al menos un 50% de los elementos
-
--   Puedes usar Tailwind, SASS, o CSS si lo deseas.
-
--   Al menos usar una libreria de animaciones como AOS (Recomendado) o Animate.css, por mencionar alguinas.
-
--  Debe contener un footer con un Copyrigth (inventado).
-
--  OPCIONAL: Añade un reloj digital donde consideres que quede bien.
--  OPCIONAL: Añade la ubicacion (Falsa) de la tienda.
-
-*/
-
 // ventana emergente
-
-;
 Swal.fire({
     title: 'Bienvenido a supermercados Tigo, siempre contigo.',
     color: '#FF931B',
@@ -121,7 +58,7 @@ inicio.addEventListener("click",()=>{
             }
         }
     )
-})
+});
 logo.addEventListener("click",()=>{
     let contenedor = document.getElementsByClassName("inicio")[0];
     clases.map(
@@ -135,8 +72,7 @@ logo.addEventListener("click",()=>{
             }
         }
     )
-})
-
+});
 hogar.addEventListener("click",()=>{
     let contenedor = document.getElementsByClassName("hogar")[0];
     clases.map(
@@ -150,8 +86,7 @@ hogar.addEventListener("click",()=>{
             }
         }
     )
-})
-
+});
 viveres.addEventListener("click",()=>{
     let contenedor = document.getElementsByClassName("viveres")[0];
     clases.map(
@@ -165,8 +100,7 @@ viveres.addEventListener("click",()=>{
             }
         }
     )
-})
-
+});
 tecnologia.addEventListener("click",()=>{
     let contenedor = document.getElementsByClassName("tecnologia")[0];
     clases.map(
@@ -180,7 +114,7 @@ tecnologia.addEventListener("click",()=>{
             }
         }
     )
-})
+});
 ropa.addEventListener("click",()=>{
     let contenedor = document.getElementsByClassName("ropa")[0];
     clases.map(
@@ -194,11 +128,9 @@ ropa.addEventListener("click",()=>{
             }
         }
     )
-})
+});
 carritoCompras.addEventListener("click",()=>{
     let contenedor = document.getElementsByClassName("carritoCompras")[0];
-    let ocultarCarrusel = document.querySelector(".ocultoCarrusel");
-    let visibleCarrusel = document.querySelector(".visibleCarrusel");
     clases.map(
         (elemento) => {
             if (elemento === "carritoCompras") {
@@ -215,4 +147,4 @@ carritoCompras.addEventListener("click",()=>{
             }
         }
     )
-})
+});

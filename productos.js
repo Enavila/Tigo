@@ -127,31 +127,28 @@ async function buscarDatos() {
                 return respuesta.json()
             }).then(
                 (respuesta) => {
-                    console.table(respuesta);
+                    // console.table(respuesta);
                     return respuesta;
                 }
             )
             .catch((err) => {
                 console.log(err)
             });
-        console.log(obtenerDatos.Inicio)
+        // console.log(obtenerDatos.Inicio)
 
         let datosInicio = document.getElementById("datosInicio");
-        console.log(obtenerDatos.Inicio.Favoritos[0].nombre);
         const categoriasInicio = Object.keys(obtenerDatos.Inicio);
-        console.log(categoriasInicio);
-
         categoriasInicio.map((categoria) => {
-            console.log(obtenerDatos.Inicio[categoria][0].nombre)
+            // console.log(obtenerDatos.Inicio[categoria][0].nombre)
             let nuevoDivCategoria = document.createElement("div");
             let tituloCategoria = document.createElement("h2");
             let nuevaCajaPadreProductos = document.createElement("div");
             tituloCategoria.classList.add("font-semibold", "text-[2.5rem]");
             nuevoDivCategoria.classList.add("flex", "flex-col", "items-start", "mt-[1rem]", "mb-[2rem]")
-            nuevaCajaPadreProductos.classList.add("flex", "justify-center", "gap-6", "items-start")
+            nuevaCajaPadreProductos.classList.add("grid","grid-cols-1", "sm:grid-cols-2", "md:grid-cols-3", "lg:grid-cols-4", "gap-6", "items-start")
             nuevoDivCategoria.appendChild(tituloCategoria);
             for (let producto in obtenerDatos.Inicio[categoria]) {
-                console.log(obtenerDatos.Inicio[categoria][producto].nombre)
+                // console.log(obtenerDatos.Inicio[categoria][producto].nombre)
                 // creacion de elementos
                 let nuevoDivProducto = document.createElement("div");
                 let nuevoParrafo1 = document.createElement("p");
@@ -162,62 +159,62 @@ async function buscarDatos() {
                 tituloCategoria.innerText = `${categoria}`;
                 nuevoParrafo1.innerText = `Nombre: ${obtenerDatos.Inicio[categoria][producto].nombre}`;
                 nuevoParrafo2.innerText = `Precio: ${obtenerDatos.Inicio[categoria][producto].precio}`;
-                nuevoParrafo3.innerText = `cantidadDisponible: ${obtenerDatos.Inicio[categoria][producto].cantidadDisponible}`;
+                nuevoParrafo3.innerText = `CantidadDisponible: ${obtenerDatos.Inicio[categoria][producto].cantidadDisponible}`;
                 imagen.src = obtenerDatos.Inicio[categoria][producto].imagen;
+                
+                // damos id al nuevo producto
+
+
                 //             // // Estilos.
                 nuevoDivProducto.classList.add("flex", "flex-col", "items-center", "col-span-1");
-                nuevoDivProducto.setAttribute("id", `miIdI${obtenerDatos.Inicio[categoria][producto].nombre}`);
-                nuevoDivProducto.setAttribute("onclick", "mostrarVentanaEmergenteProducto('Soy una ventana')");
+                nuevoDivProducto.setAttribute("onclick", `mostrarVentanaEmergenteProducto('${obtenerDatos.Inicio[categoria][producto].nombre}','${obtenerDatos.Inicio[categoria][producto].imagen}','${obtenerDatos.Inicio[categoria][producto].descripcion}','Precio: ${obtenerDatos.Inicio[categoria][producto].precio}','Cantidad disponible: ${obtenerDatos.Inicio[categoria][producto].cantidadDisponible}')`);
+                imagen.classList.add("rounded", "rounded-lg", "w-[250px]", "h-[227px]");
+                nuevoParrafo1.classList.add("font-semibold");
+                nuevoParrafo2.classList.add("font-semibold");
+                nuevoParrafo3.style.fontWeight = "600";
 
-                // nuevoDivProducto.addEventListener("click", () => {
-                //     let datosVentaEmergenteInicio = document.getElementById("ventanaEmergenteInicio");
+                //             // // Agregamos los elementos al div.
+                nuevoDivProducto.appendChild(imagen);
+                nuevoDivProducto.appendChild(nuevoParrafo1);
+                nuevoDivProducto.appendChild(nuevoParrafo2);
+                nuevoDivProducto.appendChild(nuevoParrafo3);
 
-                //     //creamos los elementos de la ventanaEmergente
-                //     let nuevaVentanaEmergenteFondo = document.createElement("div");
-                //     let nuevaVentanaEmergente = document.createElement("div");
-                //     let nuevoParrafo1 = document.createElement("p");
-                //     let nuevoParrafo2 = document.createElement("p");
-                //     let nuevoParrafo3 = document.createElement("p");
-                //     let nuevoParrafo4 = document.createElement("p");
-                //     let imagen = document.createElement("img");
-                //     let cerrar = document.createElement("button");
-                //     //cargamos los elementos de la ventanaEmergente
-                //     nuevoParrafo1.innerText = `Nombre: ${obtenerDatos.Inicio[categoria][producto].nombre}`;
-                //     nuevoParrafo2.innerText = `Precio: ${obtenerDatos.Inicio[categoria][producto].precio}`;
-                //     nuevoParrafo3.innerText = `Cantidad disponible: ${obtenerDatos.Inicio[categoria][producto].cantidadDisponible}`;
-                //     nuevoParrafo4.innerText = `Descriccion del producto: ${obtenerDatos.Inicio[categoria][producto].descripcion}`;
-                //     cerrar.innerText = "Cerrar"
-                //     imagen.src = obtenerDatos.Inicio[categoria][producto].imagen;
+                
+                //             // //Agregamos el producto al div de categoria.
+                nuevaCajaPadreProductos.appendChild(nuevoDivProducto);
+                nuevoDivCategoria.appendChild(nuevaCajaPadreProductos);
+            }
+            datosInicio.appendChild(nuevoDivCategoria);
+        });
 
-                //     //estilos
-                //     nuevaVentanaEmergenteFondo.classList.add("hidden", "fixed", "top-0", "left-0", "w-[100 %]", "h-[100 %]", "bg-[#00000080]", "z-20");
-                //     nuevaVentanaEmergente.classList.add("bg-[#fff]", "w-[50%]", "h-[50%]", "p-[20px]", "my-[100px]", "mx-auto", "rounded-md");
-                //     imagen.classList.add("rounded", "rounded-lg", "w-[250px]", "h-[227px]");
-                //     nuevoParrafo1.classList.add("font-semibold");
-                //     nuevoParrafo2.classList.add("font-semibold");
-                //     nuevoParrafo3.style.fontWeight = "600";
-                //     nuevoParrafo4.style.fontWeight = "700";
-                //     cerrar.classList.add("cursor-pointer", "rounded-md", "bg-orange-500", "px-[2%]", "py-[.4rem]", "hover:bg-orange-200", "hover:text-black", "hover:shadow-md", "hover:shadow-orange-900", "text-white", "text-[1.25rem]");
-                //     // Agregamos los elementos al div.
-                //     nuevaVentanaEmergente.appendChild(imagen);
-                //     nuevaVentanaEmergente.appendChild(nuevoParrafo1);
-                //     nuevaVentanaEmergente.appendChild(nuevoParrafo2);
-                //     nuevaVentanaEmergente.appendChild(nuevoParrafo3);
-                //     nuevaVentanaEmergente.appendChild(nuevoParrafo4);
-                //     nuevaVentanaEmergente.appendChild(cerrar);
-                //     // Agregamos la ventana al fondo
-                //     nuevaVentanaEmergenteFondo.appendChild(nuevaVentanaEmergente);
-                //     datosVentaEmergenteInicio.appendChild(nuevaVentanaEmergenteFondo);
-                //     // ponesmos en marcha la funcion
-                //     nuevaVentanaEmergenteFondo.classList.remove("hidden");
-                //     nuevaVentanaEmergenteFondo.classList.add("block");
-
-                //     cerrar.addEventListener("click", () => {
-                //         nuevaVentanaEmergenteFondo.classList.remove("block")
-                //         nuevaVentanaEmergenteFondo.classList.add("hidden")
-                //     });
-                // });
-
+        let datosHogar = document.getElementById("datosHogar");
+        const categoriasHogar = Object.keys(obtenerDatos.Hogar);
+        categoriasHogar.map((categoria) => {
+            // console.log(obtenerDatos.Hogar[categoria][0].nombre)
+            let nuevoDivCategoria = document.createElement("div");
+            let tituloCategoria = document.createElement("h2");
+            let nuevaCajaPadreProductos = document.createElement("div");
+            tituloCategoria.classList.add("font-semibold", "text-[2.5rem]");
+            nuevoDivCategoria.classList.add("flex", "flex-col", "items-start", "mt-[1rem]", "mb-[2rem]")
+            nuevaCajaPadreProductos.classList.add("grid","grid-cols-1", "sm:grid-cols-2", "md:grid-cols-3", "lg:grid-cols-4", "gap-6", "items-start")
+            nuevoDivCategoria.appendChild(tituloCategoria);
+            for (let producto in obtenerDatos.Hogar[categoria]) {
+                // console.log(obtenerDatos.Hogar[categoria][producto].nombre)
+                // creacion de elementos
+                let nuevoDivProducto = document.createElement("div");
+                let nuevoParrafo1 = document.createElement("p");
+                let nuevoParrafo2 = document.createElement("p");
+                let nuevoParrafo3 = document.createElement("p");
+                let imagen = document.createElement("img");
+                //             // // Elementos cargados
+                tituloCategoria.innerText = `${categoria}`;
+                nuevoParrafo1.innerText = `Nombre: ${obtenerDatos.Hogar[categoria][producto].nombre}`;
+                nuevoParrafo2.innerText = `Precio: ${obtenerDatos.Hogar[categoria][producto].precio}`;
+                nuevoParrafo3.innerText = `cantidadDisponible: ${obtenerDatos.Hogar[categoria][producto].cantidadDisponible}`;
+                imagen.src = obtenerDatos.Hogar[categoria][producto].imagen;
+                //             // // Estilos.
+                nuevoDivProducto.classList.add("flex", "flex-col", "items-center", "col-span-1");
+                nuevoDivProducto.setAttribute("onclick", `mostrarVentanaEmergenteProducto('${obtenerDatos.Hogar[categoria][producto].nombre}','${obtenerDatos.Hogar[categoria][producto].imagen}','${obtenerDatos.Hogar[categoria][producto].descripcion}','Precio: ${obtenerDatos.Hogar[categoria][producto].precio}','Cantidad disponible: ${obtenerDatos.Hogar[categoria][producto].cantidadDisponible}')`);
                 imagen.classList.add("rounded", "rounded-lg", "w-[250px]", "h-[227px]");
                 nuevoParrafo1.classList.add("font-semibold");
                 nuevoParrafo2.classList.add("font-semibold");
@@ -231,7 +228,139 @@ async function buscarDatos() {
                 nuevaCajaPadreProductos.appendChild(nuevoDivProducto);
                 nuevoDivCategoria.appendChild(nuevaCajaPadreProductos);
             }
-            datosInicio.appendChild(nuevoDivCategoria);
+            datosHogar.appendChild(nuevoDivCategoria);
+        });
+
+        let datosAlimentos = document.getElementById("datosAlimentos");
+        const categoriasAlimentos = Object.keys(obtenerDatos.Alimentos);
+        categoriasAlimentos.map((categoria) => {
+            // console.log(obtenerDatos.Alimentos[categoria][0].nombre)
+            let nuevoDivCategoria = document.createElement("div");
+            let tituloCategoria = document.createElement("h2");
+            let nuevaCajaPadreProductos = document.createElement("div");
+            tituloCategoria.classList.add("font-semibold", "text-[2.5rem]");
+            nuevoDivCategoria.classList.add("flex", "flex-col", "items-start", "mt-[1rem]", "mb-[2rem]")
+            nuevaCajaPadreProductos.classList.add("grid","grid-cols-1", "sm:grid-cols-2", "md:grid-cols-3", "lg:grid-cols-4", "gap-6", "items-start")
+            nuevoDivCategoria.appendChild(tituloCategoria);
+            for (let producto in obtenerDatos.Alimentos[categoria]) {
+                // console.log(obtenerDatos.Alimentos[categoria][producto].nombre)
+                // creacion de elementos
+                let nuevoDivProducto = document.createElement("div");
+                let nuevoParrafo1 = document.createElement("p");
+                let nuevoParrafo2 = document.createElement("p");
+                let nuevoParrafo3 = document.createElement("p");
+                let imagen = document.createElement("img");
+                //             // // Elementos cargados
+                tituloCategoria.innerText = `${categoria}`;
+                nuevoParrafo1.innerText = `Nombre: ${obtenerDatos.Alimentos[categoria][producto].nombre}`;
+                nuevoParrafo2.innerText = `Precio: ${obtenerDatos.Alimentos[categoria][producto].precio}`;
+                nuevoParrafo3.innerText = `cantidadDisponible: ${obtenerDatos.Alimentos[categoria][producto].cantidadDisponible}`;
+                imagen.src = obtenerDatos.Alimentos[categoria][producto].imagen;
+                //             // // Estilos.
+                nuevoDivProducto.classList.add("flex", "flex-col", "items-center", "col-span-1");
+                nuevoDivProducto.setAttribute("onclick", `mostrarVentanaEmergenteProducto('${obtenerDatos.Alimentos[categoria][producto].nombre}','${obtenerDatos.Alimentos[categoria][producto].imagen}','${obtenerDatos.Alimentos[categoria][producto].descripcion}','Precio: ${obtenerDatos.Alimentos[categoria][producto].precio}','Cantidad disponible: ${obtenerDatos.Alimentos[categoria][producto].cantidadDisponible}')`);
+                imagen.classList.add("rounded", "rounded-lg", "w-[250px]", "h-[227px]");
+                nuevoParrafo1.classList.add("font-semibold");
+                nuevoParrafo2.classList.add("font-semibold");
+                nuevoParrafo3.style.fontWeight = "600";
+                //             // // Agregamos los elementos al div.
+                nuevoDivProducto.appendChild(imagen);
+                nuevoDivProducto.appendChild(nuevoParrafo1);
+                nuevoDivProducto.appendChild(nuevoParrafo2);
+                nuevoDivProducto.appendChild(nuevoParrafo3);
+                //             // //Agregamos el producto al div de categoria.
+                nuevaCajaPadreProductos.appendChild(nuevoDivProducto);
+                nuevoDivCategoria.appendChild(nuevaCajaPadreProductos);
+            }
+            datosAlimentos.appendChild(nuevoDivCategoria);
+        });
+
+        let datosTecnologia = document.getElementById("datosTecnologia");
+        const categoriasTecnologia = Object.keys(obtenerDatos.Tecnologia);
+        categoriasTecnologia.map((categoria) => {
+            // console.log(obtenerDatos.Tecnologia[categoria][0].nombre)
+            let nuevoDivCategoria = document.createElement("div");
+            let tituloCategoria = document.createElement("h2");
+            let nuevaCajaPadreProductos = document.createElement("div");
+            tituloCategoria.classList.add("font-semibold", "text-[2.5rem]");
+            nuevoDivCategoria.classList.add("flex", "flex-col", "items-start", "mt-[1rem]", "mb-[2rem]")
+            nuevaCajaPadreProductos.classList.add("grid","grid-cols-1", "sm:grid-cols-2", "md:grid-cols-3", "lg:grid-cols-4", "gap-6", "items-start")
+            nuevoDivCategoria.appendChild(tituloCategoria);
+            for (let producto in obtenerDatos.Tecnologia[categoria]) {
+                // console.log(obtenerDatos.Tecnologia[categoria][producto].nombre)
+                // creacion de elementos
+                let nuevoDivProducto = document.createElement("div");
+                let nuevoParrafo1 = document.createElement("p");
+                let nuevoParrafo2 = document.createElement("p");
+                let nuevoParrafo3 = document.createElement("p");
+                let imagen = document.createElement("img");
+                //             // // Elementos cargados
+                tituloCategoria.innerText = `${categoria}`;
+                nuevoParrafo1.innerText = `Nombre: ${obtenerDatos.Tecnologia[categoria][producto].nombre}`;
+                nuevoParrafo2.innerText = `Precio: ${obtenerDatos.Tecnologia[categoria][producto].precio}`;
+                nuevoParrafo3.innerText = `cantidadDisponible: ${obtenerDatos.Tecnologia[categoria][producto].cantidadDisponible}`;
+                imagen.src = obtenerDatos.Tecnologia[categoria][producto].imagen;
+                //             // // Estilos.
+                nuevoDivProducto.classList.add("flex", "flex-col", "items-center", "col-span-1");
+                nuevoDivProducto.setAttribute("onclick", `mostrarVentanaEmergenteProducto('${obtenerDatos.Tecnologia[categoria][producto].nombre}','${obtenerDatos.Tecnologia[categoria][producto].imagen}','${obtenerDatos.Tecnologia[categoria][producto].descripcion}','Precio: ${obtenerDatos.Tecnologia[categoria][producto].precio}','Cantidad disponible: ${obtenerDatos.Tecnologia[categoria][producto].cantidadDisponible}')`);
+                imagen.classList.add("rounded", "rounded-lg", "w-[250px]", "h-[227px]");
+                nuevoParrafo1.classList.add("font-semibold");
+                nuevoParrafo2.classList.add("font-semibold");
+                nuevoParrafo3.style.fontWeight = "600";
+                //             // // Agregamos los elementos al div.
+                nuevoDivProducto.appendChild(imagen);
+                nuevoDivProducto.appendChild(nuevoParrafo1);
+                nuevoDivProducto.appendChild(nuevoParrafo2);
+                nuevoDivProducto.appendChild(nuevoParrafo3);
+                //             // //Agregamos el producto al div de categoria.
+                nuevaCajaPadreProductos.appendChild(nuevoDivProducto);
+                nuevoDivCategoria.appendChild(nuevaCajaPadreProductos);
+            }
+            datosTecnologia.appendChild(nuevoDivCategoria);
+        });
+
+        let datosRopa = document.getElementById("datosRopa");
+        const categoriasRopa = Object.keys(obtenerDatos.Ropa);
+        categoriasRopa.map((categoria) => {
+            // console.log(obtenerDatos.Ropa[categoria][0].nombre)
+            let nuevoDivCategoria = document.createElement("div");
+            let tituloCategoria = document.createElement("h2");
+            let nuevaCajaPadreProductos = document.createElement("div");
+            tituloCategoria.classList.add("font-semibold", "text-[2.5rem]");
+            nuevoDivCategoria.classList.add("flex", "flex-col", "items-start", "mt-[1rem]", "mb-[2rem]")
+            nuevaCajaPadreProductos.classList.add("grid","grid-cols-1", "sm:grid-cols-2", "md:grid-cols-3", "lg:grid-cols-4", "gap-6", "items-start")
+            nuevoDivCategoria.appendChild(tituloCategoria);
+            for (let producto in obtenerDatos.Ropa[categoria]) {
+                // console.log(obtenerDatos.Ropa[categoria][producto].nombre)
+                // creacion de elementos
+                let nuevoDivProducto = document.createElement("div");
+                let nuevoParrafo1 = document.createElement("p");
+                let nuevoParrafo2 = document.createElement("p");
+                let nuevoParrafo3 = document.createElement("p");
+                let imagen = document.createElement("img");
+                //             // // Elementos cargados
+                tituloCategoria.innerText = `${categoria}`;
+                nuevoParrafo1.innerText = `Nombre: ${obtenerDatos.Ropa[categoria][producto].nombre}`;
+                nuevoParrafo2.innerText = `Precio: ${obtenerDatos.Ropa[categoria][producto].precio}`;
+                nuevoParrafo3.innerText = `cantidadDisponible: ${obtenerDatos.Ropa[categoria][producto].cantidadDisponible}`;
+                imagen.src = obtenerDatos.Ropa[categoria][producto].imagen;
+                //             // // Estilos.
+                nuevoDivProducto.classList.add("flex", "flex-col", "items-center", "col-span-1");
+                nuevoDivProducto.setAttribute("onclick", `mostrarVentanaEmergenteProducto('${obtenerDatos.Ropa[categoria][producto].nombre}','${obtenerDatos.Ropa[categoria][producto].imagen}','${obtenerDatos.Ropa[categoria][producto].descripcion}','Precio: ${obtenerDatos.Ropa[categoria][producto].precio}','Cantidad disponible: ${obtenerDatos.Ropa[categoria][producto].cantidadDisponible}')`);
+                imagen.classList.add("rounded", "rounded-lg", "w-[250px]", "h-[227px]");
+                nuevoParrafo1.classList.add("font-semibold");
+                nuevoParrafo2.classList.add("font-semibold");
+                nuevoParrafo3.style.fontWeight = "600";
+                //             // // Agregamos los elementos al div.
+                nuevoDivProducto.appendChild(imagen);
+                nuevoDivProducto.appendChild(nuevoParrafo1);
+                nuevoDivProducto.appendChild(nuevoParrafo2);
+                nuevoDivProducto.appendChild(nuevoParrafo3);
+                //             // //Agregamos el producto al div de categoria.
+                nuevaCajaPadreProductos.appendChild(nuevoDivProducto);
+                nuevoDivCategoria.appendChild(nuevaCajaPadreProductos);
+            }
+            datosRopa.appendChild(nuevoDivCategoria);
         });
 
     }
@@ -247,184 +376,5 @@ buscarDatos();
 
 
 
-// let datosHogar = document.getElementById("datosHogar");
-// console.log(obtenerDatos.Hogar.Cocina[0].nombre);
-// const categoriasHogar = Object.keys(obtenerDatos.Hogar);
-// console.log(categoriasHogar);
 
-// categoriasHogar.map((categoria) => {
-//     console.log(obtenerDatos.Hogar[categoria][0].nombre)
-//     let nuevoDivCategoria = document.createElement("div");
-//     let tituloCategoria = document.createElement("h2");
-//     let nuevaCajaPadreProductos = document.createElement("div");
-//     tituloCategoria.classList.add("font-semibold", "text-[2.5rem]");
-//     nuevoDivCategoria.classList.add("flex", "flex-col", "items-start", "mt-[1rem]", "mb-[2rem]")
-//     nuevaCajaPadreProductos.classList.add("grid", "grid-cols-4", "gap-6", "items-start")
-//     nuevoDivCategoria.appendChild(tituloCategoria);
-//     for (let producto in obtenerDatos.Hogar[categoria]) {
-//         console.log(obtenerDatos.Hogar[categoria][producto].nombre)
-//         // creacion de elementos
-//         let nuevoDivProducto = document.createElement("div");
-//         let nuevoParrafo1 = document.createElement("p");
-//         let nuevoParrafo2 = document.createElement("p");
-//         let nuevoParrafo3 = document.createElement("p");
-//         let imagen = document.createElement("img");
-//         //             // // Elementos cargados
-//         tituloCategoria.innerText = `${categoria}`;
-//         nuevoParrafo1.innerText = `Nombre: ${obtenerDatos.Hogar[categoria][producto].nombre}`;
-//         nuevoParrafo2.innerText = `Precio: ${obtenerDatos.Hogar[categoria][producto].precio}`;
-//         nuevoParrafo3.innerText = `cantidadDisponible: ${obtenerDatos.Hogar[categoria][producto].cantidadDisponible}`;
-//         imagen.src = obtenerDatos.Hogar[categoria][producto].imagen;
-//         //             // // Estilos.
-//         nuevoDivProducto.classList.add("flex", "flex-col", "items-center", "col-span-1");
-//         imagen.classList.add("rounded", "rounded-lg", "w-[250px]", "h-[227px]");
-//         nuevoParrafo1.classList.add("font-semibold");
-//         nuevoParrafo2.classList.add("font-semibold");
-//         nuevoParrafo3.style.fontWeight = "600";
-//         //             // // Agregamos los elementos al div.
-//         nuevoDivProducto.appendChild(imagen);
-//         nuevoDivProducto.appendChild(nuevoParrafo1);
-//         nuevoDivProducto.appendChild(nuevoParrafo2);
-//         nuevoDivProducto.appendChild(nuevoParrafo3);
-//         //             // //Agregamos el producto al div de categoria.
-//         nuevaCajaPadreProductos.appendChild(nuevoDivProducto);
-//         nuevoDivCategoria.appendChild(nuevaCajaPadreProductos);
-//     }
-//     datosHogar.appendChild(nuevoDivCategoria);
-// });
-// let datosAlimentos = document.getElementById("datosAlimentos");
 
-// const categoriasAlimentos = Object.keys(obtenerDatos.Alimentos);
-// console.log(categoriasAlimentos);
-
-// categoriasAlimentos.map((categoria) => {
-//     console.log(obtenerDatos.Alimentos[categoria][0].nombre)
-//     let nuevoDivCategoria = document.createElement("div");
-//     let tituloCategoria = document.createElement("h2");
-//     let nuevaCajaPadreProductos = document.createElement("div");
-//     tituloCategoria.classList.add("font-semibold", "text-[2.5rem]");
-//     nuevoDivCategoria.classList.add("flex", "flex-col", "items-start", "mt-[1rem]", "mb-[2rem]")
-//     nuevaCajaPadreProductos.classList.add("grid", "grid-cols-4", "gap-6", "items-start")
-//     nuevoDivCategoria.appendChild(tituloCategoria);
-//     for (let producto in obtenerDatos.Alimentos[categoria]) {
-//         console.log(obtenerDatos.Alimentos[categoria][producto].nombre)
-//         // creacion de elementos
-//         let nuevoDivProducto = document.createElement("div");
-//         let nuevoParrafo1 = document.createElement("p");
-//         let nuevoParrafo2 = document.createElement("p");
-//         let nuevoParrafo3 = document.createElement("p");
-//         let imagen = document.createElement("img");
-//         //             // // Elementos cargados
-//         tituloCategoria.innerText = `${categoria}`;
-//         nuevoParrafo1.innerText = `Nombre: ${obtenerDatos.Alimentos[categoria][producto].nombre}`;
-//         nuevoParrafo2.innerText = `Precio: ${obtenerDatos.Alimentos[categoria][producto].precio}`;
-//         nuevoParrafo3.innerText = `cantidadDisponible: ${obtenerDatos.Alimentos[categoria][producto].cantidadDisponible}`;
-//         imagen.src = obtenerDatos.Alimentos[categoria][producto].imagen;
-//         //             // // Estilos.
-//         nuevoDivProducto.classList.add("flex", "flex-col", "items-center", "col-span-1");
-
-//         imagen.classList.add("rounded", "rounded-lg", "w-[250px]", "h-[227px]");
-//         nuevoParrafo1.classList.add("font-semibold");
-//         nuevoParrafo2.classList.add("font-semibold");
-//         nuevoParrafo3.style.fontWeight = "600";
-//         //             // // Agregamos los elementos al div.
-//         nuevoDivProducto.appendChild(imagen);
-//         nuevoDivProducto.appendChild(nuevoParrafo1);
-//         nuevoDivProducto.appendChild(nuevoParrafo2);
-//         nuevoDivProducto.appendChild(nuevoParrafo3);
-//         //             // //Agregamos el producto al div de categoria.
-//         nuevaCajaPadreProductos.appendChild(nuevoDivProducto);
-//         nuevoDivCategoria.appendChild(nuevaCajaPadreProductos);
-//     }
-//     datosAlimentos.appendChild(nuevoDivCategoria);
-// });
-// let datosTecnologia = document.getElementById("datosTecnologia");
-
-// const categoriasTecnologia = Object.keys(obtenerDatos.Tecnologia);
-// console.log(categoriasTecnologia);
-
-// categoriasTecnologia.map((categoria) => {
-//     console.log(obtenerDatos.Tecnologia[categoria][0].nombre)
-//     let nuevoDivCategoria = document.createElement("div");
-//     let tituloCategoria = document.createElement("h2");
-//     let nuevaCajaPadreProductos = document.createElement("div");
-//     tituloCategoria.classList.add("font-semibold", "text-[2.5rem]");
-//     nuevoDivCategoria.classList.add("flex", "flex-col", "items-start", "mt-[1rem]", "mb-[2rem]")
-//     nuevaCajaPadreProductos.classList.add("grid", "grid-cols-4", "gap-6", "items-start")
-//     nuevoDivCategoria.appendChild(tituloCategoria);
-//     for (let producto in obtenerDatos.Tecnologia[categoria]) {
-//         console.log(obtenerDatos.Tecnologia[categoria][producto].nombre)
-//         // creacion de elementos
-//         let nuevoDivProducto = document.createElement("div");
-//         let nuevoParrafo1 = document.createElement("p");
-//         let nuevoParrafo2 = document.createElement("p");
-//         let nuevoParrafo3 = document.createElement("p");
-//         let imagen = document.createElement("img");
-//         //             // // Elementos cargados
-//         tituloCategoria.innerText = `${categoria}`;
-//         nuevoParrafo1.innerText = `Nombre: ${obtenerDatos.Tecnologia[categoria][producto].nombre}`;
-//         nuevoParrafo2.innerText = `Precio: ${obtenerDatos.Tecnologia[categoria][producto].precio}`;
-//         nuevoParrafo3.innerText = `cantidadDisponible: ${obtenerDatos.Tecnologia[categoria][producto].cantidadDisponible}`;
-//         imagen.src = obtenerDatos.Tecnologia[categoria][producto].imagen;
-//         //             // // Estilos.
-//         nuevoDivProducto.classList.add("flex", "flex-col", "items-center", "col-span-1");
-//         imagen.classList.add("rounded", "rounded-lg", "w-[250px]", "h-[227px]");
-//         nuevoParrafo1.classList.add("font-semibold");
-//         nuevoParrafo2.classList.add("font-semibold");
-//         nuevoParrafo3.style.fontWeight = "600";
-//         //             // // Agregamos los elementos al div.
-//         nuevoDivProducto.appendChild(imagen);
-//         nuevoDivProducto.appendChild(nuevoParrafo1);
-//         nuevoDivProducto.appendChild(nuevoParrafo2);
-//         nuevoDivProducto.appendChild(nuevoParrafo3);
-//         //             // //Agregamos el producto al div de categoria.
-//         nuevaCajaPadreProductos.appendChild(nuevoDivProducto);
-//         nuevoDivCategoria.appendChild(nuevaCajaPadreProductos);
-//     }
-//     datosTecnologia.appendChild(nuevoDivCategoria);
-// });
-// let datosRopa = document.getElementById("datosRopa");
-
-// const categoriasRopa = Object.keys(obtenerDatos.Ropa);
-// console.log(categoriasRopa);
-
-// categoriasRopa.map((categoria) => {
-//     console.log(obtenerDatos.Ropa[categoria][0].nombre)
-//     let nuevoDivCategoria = document.createElement("div");
-//     let tituloCategoria = document.createElement("h2");
-//     let nuevaCajaPadreProductos = document.createElement("div");
-//     tituloCategoria.classList.add("font-semibold", "text-[2.5rem]");
-//     nuevoDivCategoria.classList.add("flex", "flex-col", "items-start", "mt-[1rem]", "mb-[2rem]")
-//     nuevaCajaPadreProductos.classList.add("grid", "grid-cols-4", "gap-6", "items-start")
-//     nuevoDivCategoria.appendChild(tituloCategoria);
-//     for (let producto in obtenerDatos.Ropa[categoria]) {
-//         console.log(obtenerDatos.Ropa[categoria][producto].nombre)
-//         // creacion de elementos
-//         let nuevoDivProducto = document.createElement("div");
-//         let nuevoParrafo1 = document.createElement("p");
-//         let nuevoParrafo2 = document.createElement("p");
-//         let nuevoParrafo3 = document.createElement("p");
-//         let imagen = document.createElement("img");
-//         //             // // Elementos cargados
-//         tituloCategoria.innerText = `${categoria}`;
-//         nuevoParrafo1.innerText = `Nombre: ${obtenerDatos.Ropa[categoria][producto].nombre}`;
-//         nuevoParrafo2.innerText = `Precio: ${obtenerDatos.Ropa[categoria][producto].precio}`;
-//         nuevoParrafo3.innerText = `cantidadDisponible: ${obtenerDatos.Ropa[categoria][producto].cantidadDisponible}`;
-//         imagen.src = obtenerDatos.Ropa[categoria][producto].imagen;
-//         //             // // Estilos.
-//         nuevoDivProducto.classList.add("flex", "flex-col", "items-center", "col-span-1");
-//         imagen.classList.add("rounded", "rounded-lg", "w-[250px]", "h-[227px]");
-//         nuevoParrafo1.classList.add("font-semibold");
-//         nuevoParrafo2.classList.add("font-semibold");
-//         nuevoParrafo3.style.fontWeight = "600";
-//         //             // // Agregamos los elementos al div.
-//         nuevoDivProducto.appendChild(imagen);
-//         nuevoDivProducto.appendChild(nuevoParrafo1);
-//         nuevoDivProducto.appendChild(nuevoParrafo2);
-//         nuevoDivProducto.appendChild(nuevoParrafo3);
-//         //             // //Agregamos el producto al div de categoria.
-//         nuevaCajaPadreProductos.appendChild(nuevoDivProducto);
-//         nuevoDivCategoria.appendChild(nuevaCajaPadreProductos);
-//     }
-//     datosRopa.appendChild(nuevoDivCategoria);
-// });

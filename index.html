@@ -55,7 +55,7 @@
             margin-right: auto;
             }
             article{
-                position: relative;
+                /* position: relative; */
                 height: 45vh;
                 min-height: 200px;
             }
@@ -80,7 +80,9 @@
                 <div id="boxBuscador" class="w-[60vw]">
                     <div class="flex justify-center items-center w-[100%] px-[5%]">
                         <input type="text" placeholder="Buscar..." class="rounded-l-[50px] w-[90%] h-[2.5rem] bg-orange-200 pl-[4%] text-[1.3rem] outline-none">
-                        <button class="bg-orange-500 rounded-r-[5px] text-white font-semibold text-[1.3rem] w-[10%] h-[2.5rem]">Buscar</button>
+                        <button class=" bg-orange-500 rounded-r-[5px] text-white font-semibold text-[rem] w-[10%] h-[2.5rem]"><span class="material-symbols-outlined">
+                            search
+                        </span></button>
                     </div>
                 </div>
                 <div id="box" class="flex justify-between items-center gap-8 w-[34vw]">
@@ -88,7 +90,7 @@
                         <span class="material-symbols-outlined text-white">
                             distance
                         </span>
-                        <select name="" id="" class="bg-orange-200 h-[2.5rem] text-[1.1rem] rounded-[5px] w-[105px] outline-none text-center text-[#9CA7AD]">
+                        <select name="" id="" class=" hidden md:block h-[2.5rem] text-[1.1rem] rounded-[5px] w-[105px] outline-none text-center text-[#9CA7AD]">
                             <option value="Donde estas?" >¿Donde estas?</option>
                             <option value="caracas">Carcas</option>
                             <option value="valencia">Valencia</option>
@@ -100,16 +102,20 @@
                     </div>
                     <div id="boxCarrito" class="flex justify-between items-center">
                         <a id="carritoCompras" class="cursor-pointer flex justify-between items-center">
-                            <span class="material-symbols-outlined text-white">
-                                shopping_cart
-                            </span>
+                            <div class="count-products flex flex-col  items-center">
+                                <span id="contador-productos" class="text-white text-[1.1rem]">0</span>
+                                <span class="material-symbols-outlined text-white mt-[-.75rem]">
+                                    shopping_cart
+                                </span>
+                            </div>
+                            
                             <span class="text-white text-[1.4rem]">Carrito</span>
                         </a>
                     </div>
                     <div id="boxUsuario" class="flex justify-between items-center gap-[1rem]">
-                        <p id="nameUsuario" class="text-white text-[1.4rem] font-bold">Eduardo Avila</p>
+                        <p id="nameUsuario" class=" hidden lg:block text-white text-[1.4rem] font-bold">Eduardo Avila</p>
                         <div>
-                            <img src="./img/perfil.jpg" alt="fotoUsuario" class="rounded-[50px] w-[3rem]">
+                            <img src="./img/perfil.jpg" alt="fotoUsuario" class="rounded-[50px] min-w-[3rem] w-[3rem]">
                         </div>
 
                     </div>
@@ -129,7 +135,7 @@
                         class="cursor-pointer rounded-md bg-orange-500 px-[2%] py-[.4rem] hover:bg-orange-200 hover:text-black hover:shadow-md hover:shadow-orange-900 text-white text-[1.25rem] ">Ropa</a>
                 </div>
                 <div id="descuento">
-                    <div class="cursor-pointer flex justify-center items-center gap-4 rounded-md bg-orange-500 px-[2%] py-[.2rem] hover:bg-orange-200 hover:text-black hover:shadow-md hover:shadow-orange-900 text-white text-[1.2rem] font-bold min-w-[150px]" onclick="mostrarVentanaEmergente('Cupones TIGO!!!')">Ingrese cupón
+                    <div class="hidden md:flex justify-center items-center gap-4 rounded-md bg-orange-500 px-[2%] py-[.2rem] hover:bg-orange-200 hover:text-black hover:shadow-md hover:shadow-orange-900 text-white text-[1.2rem] font-bold min-w-[150px]" onclick="mostrarVentanaEmergente('Cupones TIGO!!!')">Ingrese cupón
                         <span class="material-symbols-outlined  ">
                             local_activity
                         </span>
@@ -145,12 +151,7 @@
 
             </div>
         </header>
-        <div id="ventanaEmergenteInicio" class="hidden fixed top-0 left-0 w-[100%] h-[100%] bg-[#00000080] z-100">
-            <div class="bg-[#fff] w-[50%] h-[50%] p-[20px] my-[100px] mx-auto rounded-md">
-                <span id="nombreProductoVentanaEmergenteInicio" class="text-red-600"></span>
-                <button onclick="cerrarVentanaEmergenteProducto()">Cerrar</button>
-            </div>
-        </div>
+
         <main>
             <section  class="w-[100%]  mt-[14vh] inicio visible flex flex-col ">
                 <article id="carrusel" class=" carrusel visibleCarrusel ">
@@ -172,7 +173,7 @@
 
                 </div>
             </section>
-            <section id="" class="w-[100%]  hogar oculto">
+            <section  class="w-[100%]  hogar oculto">
                 <div id="datosHogar" class="flex flex-col items-center pt-[10%] pb-[7%] px-[5vw] mx-[10%] opacity-100  w-[80%] min-h-[100vh]  bg-white">
 
                 </div>
@@ -192,18 +193,65 @@
 
                 </div>
             </section>
-            <section id="" class="w-[100%] carritoCompras oculto">
-                <div class="flex flex-col items-center pt-[10%] pb-[7%] px-[5vw] mx-[10%] opacity-100  w-[80%] min-h-[100vh]  bg-white">
-                
+            <div id="ventanaEmergenteInicio" class="hidden fixed top-0 left-0 w-[100%] h-[100%] bg-[#00000080] z-100">
+            <div class="flex flex-col bg-[#fff] w-[90%] md:w-[70%] lg:w-[50%] h-[50%] p-[20px] my-[100px] mx-auto rounded-md container-items">
+                <div class="flex justify-between items-center h-[10%] nombreProductoVent">
+                    <span id="nombreProductoVentanaEmergenteInicio" class="text-red-600 text-[2rem] font-bold"></span>
+                    <button onclick="cerrarVentanaEmergenteProducto()" class="text-white font-extrabold cursor-pointer rounded-md bg-orange-500 px-[.8rem] py-[.4rem] hover:bg-orange-200 hover:text-black hover:shadow-md hover:shadow-orange-900 text-white text-[1.25rem] ">X</button>
+                </div>
+                <div id="imgVentanaEmergente" class="flex justify-between mx-[3rem] h-[75%] ">
+                    <img id="imgVentE" src="" alt="imgProducto" class="h-[100%]">
+                    <div id="textVentanaEmergente" class="flex flex-col justify-center  w-[40%]">
+                        <p id="desVentE" class="text-[1.2rem]">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Non nulla dolorum voluptate nam praesentium atque culpa libero minima eveniet sequi.</p>
+                        <p id="canVentE" class="text-[1.2rem]">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Non nulla dolorum voluptate nam praesentium atque culpa libero minima eveniet sequi.</p>
+                        <p id="preVentE" class="text-[1.2rem]">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Non nulla dolorum voluptate nam praesentium atque culpa libero minima eveniet sequi.</p>
+                    </div>
+                </div>
+                <div id="carrito" class="flex justify-end h-[15%] ">
+                    <button class="flex justify-center text-[1.5rem] font-semibold  items-center cursor-pointer rounded-md bg-orange-500 px-[.8rem]  hover:bg-orange-200 hover:text-black hover:shadow-md hover:shadow-orange-900 text-white text-[1.25rem] btn-add-cart "> 
+                        <span class="material-symbols-outlined  ">
+                        shopping_cart
+                        </span>
+                        Agregar
+                    </button>
+                </div>
+            </div>
+            </div>
+            <section  class="w-[100%] mt-[7%] carritoCompras oculto">
+                <div id="datosCarrito" class="flex flex-col items-center pt-[5%] pb-[7%] px-[5vw] mx-[10%]  opacity-100  w-[80%] min-h-[100vh]  bg-white">
+                    <div>
+                        <h2 class="font-bold text-[2rem]">Carrito</h2>
+                    </div>
+                    <div class="row-product w-[80%] min-h-[80%]">
+                        <div class="cart-product w-[90%]">
+                    
+                        </div>
+                    </div>
+                    <div class="cart-total flex ">
+                        <h3 class="font-bold text-[2rem]">Total: </h3>
+                        <span class="total-pagar font-bold text-[2rem]">0</span>
+                    </div>
+                    <button id="pagar"
+                        class="flex justify-center text-[1.5rem] font-semibold  items-center cursor-pointer rounded-md bg-orange-500 px-[.8rem]  hover:bg-orange-200 hover:text-black hover:shadow-md hover:shadow-orange-900 text-white text-[1.25rem] btn-add-cart mt-[2rem] ">
+                        <span class="material-symbols-outlined">
+                            credit_card
+                        </span>
+                        Pagar
+                    </button>
                 </div>
             </section>
-            <footer class="flex flex-col w-[100%] h-[10rem] bg-orange-600  "></footer>
+            <footer class="flex justify-between items-center px-[2rem] w-[100%] h-[10rem] bg-orange-600  ">
+                <div></div>
+                <div id="reloj" class="flex justify-center items-center text-orange-200 text-[1.5rem] w-[200px] h-[50px] border-2 border-orange-200 border-solid "></div>
+            </footer>
         </main>
-        <!-- <script src="obtenerProductos.js"></script> -->
+
         <script src="ventanasEmer.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script> 
         <script src="index.js"></script>
         <script src="productos.js"></script> 
-        <!-- <script src="productosHogar.js"></script> -->
+        <script src="carrito.js"></script>
+        <script src="reloj.js"></script>
+
     </body>
 </html>
