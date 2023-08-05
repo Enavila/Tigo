@@ -72,16 +72,21 @@
             .ocultoCarrusel{
                 display: none;
             }
+            @media (max-width: 420px){
+                .visibleCarrusel{
+                    display: none;
+                }
+            }
         </style>
         <header class="flex flex-col w-[100%] bg-[#FF931B] fixed z-10">
             <div id="header" class="flex justify-between items-center pt-4 pb-2 px-8 ">
                 <div id="boxLogo" class="flex justify-center items-center w-[6vw]">
                     <a id="logo" class="cursor-pointer text-white text-[2.5rem] ">Tigo</a>
                 </div>
-                <div id="boxBuscador" class="w-[60vw]">
-                    <div class="flex justify-center items-center w-[100%] px-[5%]">
-                        <input type="text" placeholder="Buscar..." class="rounded-l-[50px] w-[90%] h-[2.5rem] bg-orange-200 pl-[4%] text-[1.3rem] outline-none">
-                        <button class=" bg-orange-500 rounded-r-[5px] text-white font-semibold text-[rem] w-[10%] h-[2.5rem]"><span class="material-symbols-outlined">
+                <div id="boxBuscador" class="w-[60vw] ml-[1rem] sm:ml-[0rem]">
+                    <div class="flex justify-center items-center w-[90%] px-[5%]">
+                        <input type="text" placeholder="Buscar..." class="rounded-l-[50px] w-[80%] h-[2.5rem] bg-orange-200 pl-[4%] text-[1.3rem] outline-none min-[420px]:w-[90%]">
+                        <button class=" bg-orange-500 rounded-r-[5px] text-white font-semibold text-[rem] w-[20%] h-[2.5rem]"><span class="material-symbols-outlined  min-[420px]:w-[10%]">
                             search
                         </span></button>
                     </div>
@@ -110,7 +115,7 @@
                                 </span>
                             </div>
                             
-                            <span class="text-white text-[1.4rem]">Carrito</span>
+                            <span class="text-white text-[0rem] min-[420px]:text-[1.4rem]">Carrito</span>
                         </a>
                     </div>
                     <div id="boxUsuario" class="flex justify-between items-center gap-[1rem]">
@@ -122,7 +127,7 @@
                     </div>
                 </div>
             </div>
-            <div id="btnDes" class="flex justify-between items-center px-[4rem]">
+            <div id="btnDes" class="flex justify-between items-center px-[1.5rem] min-[420px]:px-[4rem]">
                 <div id="botonera" class="flex justify-start items-center gap-[2rem]  h-[4rem]">
                     <a  id="inicio"
                         class="cursor-pointer rounded-md bg-orange-500 px-[2%] py-[.4rem] hover:bg-orange-200 hover:text-black hover:shadow-md hover:shadow-orange-900 text-white text-[1.25rem] ">Inicio</a>
@@ -154,8 +159,8 @@
         </header>
 
         <main>
-            <section  class="w-[100%]  mt-[14vh] inicio visible flex flex-col ">
-                <article id="carrusel" class=" carrusel visibleCarrusel ">
+            <section  class="w-[100%]  mt-[11vh] inicio visible flex flex-col ">
+                <article id="carrusel" class=" hidden min-[420px]:block carrusel visibleCarrusel ">
                     <div class="swiper mySwiper h-[100%]" >
                         <div class="swiper-wrapper">
                             <div class="swiper-slide"><img src="./img/fabuloso-0623.jpg" class="h-[100%] w-[auto]" alt=""></div>
@@ -174,22 +179,22 @@
 
                 </div>
             </section>
-            <section  class="w-[100%]  hogar oculto">
+            <section  class="w-[100%]  mt-[11vh] min-[420px]:mt-[0rem]  hogar oculto">
                 <div id="datosHogar" class="flex flex-col items-center pt-[10%] pb-[7%] px-[5vw] mx-[10%] opacity-100  w-[80%] min-h-[100vh]  bg-white">
 
                 </div>
             </section>
-            <section class="w-[100%] viveres oculto">
+            <section class="w-[100%] mt-[11vh] min-[420px]:mt-[0rem]  viveres oculto">
                 <div id="datosAlimentos" class="flex flex-col items-center pt-[10%] pb-[7%] px-[5vw] mx-[10%] opacity-100  w-[80%] min-h-[100vh]  bg-white">
 
                 </div>
             </section>
-            <section class="w-[100%] tecnologia oculto">
+            <section class="w-[100%]  mt-[11vh] min-[420px]:mt-[0rem] tecnologia oculto">
                 <div id="datosTecnologia" class="flex flex-col items-center pt-[10%] pb-[7%] px-[5vw] mx-[10%] opacity-100  w-[80%] min-h-[100vh]  bg-white">
 
                 </div>
             </section>
-            <section class="w-[100%] ropa oculto">
+            <section class="w-[100%]  mt-[11vh] min-[420px]:mt-[0rem]  ropa oculto">
                 <div id="datosRopa" class="flex flex-col items-center pt-[10%] pb-[7%] px-[5vw] mx-[10%] opacity-100  w-[80%] min-h-[100vh]  bg-white">
 
                 </div>
@@ -218,7 +223,7 @@
                 </div>
             </div>
             </div>
-            <section  class="w-[100%] mt-[7%] carritoCompras oculto">
+            <section  class="w-[100%] mt-[11vh] carritoCompras oculto">
                 <div id="datosCarrito" class="flex flex-col items-center pt-[5%] pb-[7%] px-[5vw] mx-[10%]  opacity-100  w-[80%] min-h-[100vh]  bg-white">
                     <div>
                         <h2 class="font-bold text-[2rem]">Carrito</h2>
