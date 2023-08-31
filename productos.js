@@ -23,7 +23,7 @@ async function buscarDatos() {
             let nuevaCajaPadreProductos = document.createElement("div");
             tituloCategoria.classList.add("font-semibold", "text-[2.5rem]");
             nuevoDivCategoria.classList.add("flex", "flex-col", "items-start", "mt-[1rem]", "mb-[2rem]")
-            nuevaCajaPadreProductos.classList.add("grid","grid-cols-1", "sm:grid-cols-2", "md:grid-cols-3", "lg:grid-cols-4", "gap-6", "items-start")
+            nuevaCajaPadreProductos.classList.add("grid", "grid-cols-1", "sm:grid-cols-2", "md:grid-cols-3", "lg:grid-cols-4", "gap-6", "items-start")
             nuevoDivCategoria.appendChild(tituloCategoria);
             for (let producto in obtenerDatos.Inicio[categoria]) {
                 // console.log(obtenerDatos.Inicio[categoria][producto].nombre)
@@ -36,8 +36,8 @@ async function buscarDatos() {
                 //             // // Elementos cargados
                 tituloCategoria.innerText = `${categoria}`;
                 nuevoParrafo1.innerText = `Nombre: ${obtenerDatos.Inicio[categoria][producto].nombre}`;
-                nuevoParrafo2.innerText = `Precio: ${obtenerDatos.Inicio[categoria][producto].precio}`;
-                nuevoParrafo3.innerText = `CantidadDisponible: ${obtenerDatos.Inicio[categoria][producto].cantidadDisponible}`;
+                nuevoParrafo2.innerText = `Precio: ${obtenerDatos.Inicio[categoria][producto].precio}$`;
+                nuevoParrafo3.innerText = `Cantidad disponible: ${obtenerDatos.Inicio[categoria][producto].cantidadDisponible}`;
                 imagen.src = obtenerDatos.Inicio[categoria][producto].imagen;
                 
                 // damos id al nuevo producto
@@ -87,8 +87,8 @@ async function buscarDatos() {
                 //             // // Elementos cargados
                 tituloCategoria.innerText = `${categoria}`;
                 nuevoParrafo1.innerText = `Nombre: ${obtenerDatos.Hogar[categoria][producto].nombre}`;
-                nuevoParrafo2.innerText = `Precio: ${obtenerDatos.Hogar[categoria][producto].precio}`;
-                nuevoParrafo3.innerText = `cantidadDisponible: ${obtenerDatos.Hogar[categoria][producto].cantidadDisponible}`;
+                nuevoParrafo2.innerText = `Precio: ${obtenerDatos.Hogar[categoria][producto].precio}$`;
+                nuevoParrafo3.innerText = `Cantidad disponible: ${obtenerDatos.Hogar[categoria][producto].cantidadDisponible}`;
                 imagen.src = obtenerDatos.Hogar[categoria][producto].imagen;
                 //             // // Estilos.
                 nuevoDivProducto.classList.add("flex", "flex-col", "items-center", "col-span-1");
@@ -131,8 +131,8 @@ async function buscarDatos() {
                 //             // // Elementos cargados
                 tituloCategoria.innerText = `${categoria}`;
                 nuevoParrafo1.innerText = `Nombre: ${obtenerDatos.Alimentos[categoria][producto].nombre}`;
-                nuevoParrafo2.innerText = `Precio: ${obtenerDatos.Alimentos[categoria][producto].precio}`;
-                nuevoParrafo3.innerText = `cantidadDisponible: ${obtenerDatos.Alimentos[categoria][producto].cantidadDisponible}`;
+                nuevoParrafo2.innerText = `Precio: ${obtenerDatos.Alimentos[categoria][producto].precio}$`;
+                nuevoParrafo3.innerText = `Cantidad disponible: ${obtenerDatos.Alimentos[categoria][producto].cantidadDisponible}`;
                 imagen.src = obtenerDatos.Alimentos[categoria][producto].imagen;
                 //             // // Estilos.
                 nuevoDivProducto.classList.add("flex", "flex-col", "items-center", "col-span-1");
@@ -175,8 +175,8 @@ async function buscarDatos() {
                 //             // // Elementos cargados
                 tituloCategoria.innerText = `${categoria}`;
                 nuevoParrafo1.innerText = `Nombre: ${obtenerDatos.Tecnologia[categoria][producto].nombre}`;
-                nuevoParrafo2.innerText = `Precio: ${obtenerDatos.Tecnologia[categoria][producto].precio}`;
-                nuevoParrafo3.innerText = `cantidadDisponible: ${obtenerDatos.Tecnologia[categoria][producto].cantidadDisponible}`;
+                nuevoParrafo2.innerText = `Precio: ${obtenerDatos.Tecnologia[categoria][producto].precio}$`;
+                nuevoParrafo3.innerText = `Cantidad disponible: ${obtenerDatos.Tecnologia[categoria][producto].cantidadDisponible}`;
                 imagen.src = obtenerDatos.Tecnologia[categoria][producto].imagen;
                 //             // // Estilos.
                 nuevoDivProducto.classList.add("flex", "flex-col", "items-center", "col-span-1");
@@ -219,8 +219,8 @@ async function buscarDatos() {
                 //             // // Elementos cargados
                 tituloCategoria.innerText = `${categoria}`;
                 nuevoParrafo1.innerText = `Nombre: ${obtenerDatos.Ropa[categoria][producto].nombre}`;
-                nuevoParrafo2.innerText = `Precio: ${obtenerDatos.Ropa[categoria][producto].precio}`;
-                nuevoParrafo3.innerText = `cantidadDisponible: ${obtenerDatos.Ropa[categoria][producto].cantidadDisponible}`;
+                nuevoParrafo2.innerText = `Precio: ${obtenerDatos.Ropa[categoria][producto].precio}$`;
+                nuevoParrafo3.innerText = `Cantidad disponible: ${obtenerDatos.Ropa[categoria][producto].cantidadDisponible}`;
                 imagen.src = obtenerDatos.Ropa[categoria][producto].imagen;
                 //             // // Estilos.
                 nuevoDivProducto.classList.add("flex", "flex-col", "items-center", "col-span-1");

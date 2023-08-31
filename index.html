@@ -4,7 +4,6 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://cdn.tailwindcss.com"></script>
-        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
         <link rel="shortcut icon" href="./img/9944464.png" type="image/x-icon">
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,50 +32,14 @@
                 background-attachment: fixed;
                 background-size: cover;
             }
-            .swiper {
-            width: 100%;
-            height: 100%;
-            }
-            .swiper-slide {
-            text-align: center;
-            font-size: 18px;
-            background: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            }
-            .swiper-slide img {
-            display: block;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            }
-            .swiper {
-            margin-left: auto;
-            margin-right: auto;
-            }
-            article{
-                /* position: relative; */
-                height: 45vh;
-                min-height: 200px;
-            }
-            .visibleCarrusel{
-                display: block;
-            }
-            .visible{
-                display: flex;
-            }
-            .oculto {
+
+            .oculto{
                 display: none;
             }
-            .ocultoCarrusel{
-                display: none;
-            }
-            @media (max-width: 420px){
-                .visibleCarrusel{
-                    display: none;
-                }
-            }
+            
+
+
+
         </style>
         <header class="flex flex-col w-[100%] bg-[#FF931B] fixed z-10">
             <div id="header" class="flex justify-between items-center pt-4 pb-2 px-8 ">
@@ -159,24 +122,23 @@
         </header>
 
         <main>
-            <section  class="w-[100%]  mt-[11vh] inicio visible flex flex-col ">
-                <article id="carrusel" class=" hidden min-[420px]:block carrusel visibleCarrusel ">
-                    <div class="swiper mySwiper h-[100%]" >
+            <section  class="w-[100%]  mt-[11vh] inicio  flex flex-col ">
+                <article id="carrusel" class="  carrusel  min-[420px]:mt-[3.1vh]">
+                    <div class="swiper w-[100%]   mySwiper   mx-auto" >
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide"><img src="./img/fabuloso-0623.jpg" class="h-[100%] w-[auto]" alt=""></div>
-                            <div class="swiper-slide"><img src="./img/izy-0523.jpg" alt=""></div>
-                            <div class="swiper-slide"><img src="./img/oki-0623.jpg" alt=""></div>
-                            <div class="swiper-slide"><img src="./img/procamp-1.png" alt=""></div>
-                            <div class="swiper-slide"><img src="./img/suavitel-0523.jpg" alt=""></div>
-                            <div class="swiper-slide"><img src="./img/vicone-0523.jpg" alt=""></div>
+                            <div class="swiper-slide text-center text-[18px] bg-white flex justify-center items-center"><img class="block  object-cover" src="./img/fabuloso-0623.jpg" alt=""></div>
+                            <div class="swiper-slide text-center text-[18px] bg-white flex justify-center items-center"><img class="block  object-cover" src="./img/izy-0523.jpg" alt=""></div>
+                            <div class="swiper-slide text-center text-[18px] bg-white flex justify-center items-center"><img class="block  object-cover" src="./img/oki-0623.jpg" alt=""></div>
+                            <div class="swiper-slide text-center text-[18px] bg-white flex justify-center items-center"><img class="block  object-cover" src="./img/procamp-1.png" alt=""></div>
+                            <div class="swiper-slide text-center text-[18px] bg-white flex justify-center items-center"><img class="block  object-cover" src="./img/suavitel-0523.jpg" alt=""></div>
+                            <div class="swiper-slide text-center text-[18px] bg-white flex justify-center items-center"><img class="block  object-cover" src="./img/vicone-0523.jpg" alt=""></div>
                         </div>
                         <div class="swiper-button-next text-transparent h-[100%] mt-[-120px]"></div>
                         <div class="swiper-button-prev text-transparent h-[100%] mt-[-120px]"></div>
-                        <div class="swiper-pagination"></div>
+                        <!-- <div class="swiper-pagination"></div> -->
                     </div>
                 </article>
-                <div id="datosInicio" class="flex flex-col items-center pt-[4%] pb-[7%] px-[5vw] mx-[10%] opacity-100  w-[80%] min-h-[100vh]  bg-white">
-
+                <div id="datosInicio" class="flex flex-col items-center pt-[4%] pb-[7%] px-[5vw] mx-[10%] mt-[-1%] opacity-100  w-[80%] min-h-[100vh]  bg-white/90">
                 </div>
             </section>
             <section  class="w-[100%]  mt-[11vh] min-[420px]:mt-[0rem]  hogar oculto">
@@ -205,7 +167,7 @@
                     <span id="nombreProductoVentanaEmergenteInicio" class="text-red-600 text-[2rem] font-bold"></span>
                     <button onclick="cerrarVentanaEmergenteProducto()" class="text-white font-extrabold cursor-pointer rounded-md bg-orange-500 px-[.8rem] py-[.4rem] hover:bg-orange-200 hover:text-black hover:shadow-md hover:shadow-orange-900 text-white text-[1.25rem] ">X</button>
                 </div>
-                <div id="imgVentanaEmergente" class="flex justify-between mx-[3rem] h-[75%] ">
+                <div id="imgVentanaEmergente" class="flex flex-col min-[421px]:flex-row justify-between mx-[3rem] h-[75%] ">
                     <img id="imgVentE" src="" alt="imgProducto" class="h-[100%]">
                     <div id="textVentanaEmergente" class="flex flex-col justify-center  w-[40%]">
                         <p id="desVentE" class="text-[1.2rem]">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Non nulla dolorum voluptate nam praesentium atque culpa libero minima eveniet sequi.</p>
@@ -224,29 +186,77 @@
             </div>
             </div>
             <section  class="w-[100%] mt-[11vh] carritoCompras oculto">
-                <div id="datosCarrito" class="flex flex-col items-center pt-[5%] pb-[7%] px-[5vw] mx-[10%]  opacity-100  w-[80%] min-h-[100vh]  bg-white">
-                    <div>
-                        <h2 class="font-bold text-[2rem]">Carrito</h2>
-                    </div>
-                    <div class="row-product w-[80%] min-h-[80%]">
-                        <div class="cart-product w-[90%]">
-                    
+                <div id="datosCarrito" class="flex flex-col justify-between items-center pt-[5%] pb-[7%] px-[5vw] mx-[10%]  opacity-100  w-[80%] min-h-[100vh]  bg-white">
+                    <div class="w-[80%] ">
+                        <div class="flex items-center justify-center ">
+                            <h2 class="font-bold text-[2rem]">Carrito</h2>
+                        </div>
+                        <div class="row-product w-[100%] min-h-[80%] ">
+                            <div class="cart-product w-[100%] justify-between">
+                        
+                            </div>
                         </div>
                     </div>
-                    <div class="cart-total flex ">
-                        <h3 class="font-bold text-[2rem]">Total: </h3>
-                        <span class="total-pagar font-bold text-[2rem]">0</span>
+                    <div>
+                        <div class="cart-total flex ">
+                            <h3 class="font-bold text-[2rem]">Total: </h3>
+                            <span class="total-pagar font-bold text-[2rem]">0</span>
+                        </div>
+                        <button id="pagar"
+                            class="flex justify-center text-[1.5rem] font-semibold  items-center cursor-pointer rounded-md bg-orange-500 px-[.8rem]  hover:bg-orange-200 hover:text-black hover:shadow-md hover:shadow-orange-900 text-white text-[1.25rem] btn-add-cart mt-[2rem] ">
+                            <span class="material-symbols-outlined">
+                                credit_card
+                            </span>
+                            Pagar
+                        </button>
                     </div>
-                    <button id="pagar"
-                        class="flex justify-center text-[1.5rem] font-semibold  items-center cursor-pointer rounded-md bg-orange-500 px-[.8rem]  hover:bg-orange-200 hover:text-black hover:shadow-md hover:shadow-orange-900 text-white text-[1.25rem] btn-add-cart mt-[2rem] ">
-                        <span class="material-symbols-outlined">
-                            credit_card
-                        </span>
-                        Pagar
-                    </button>
+                </div>
+                <div id="cajaFactura" class=" hidden fixed top-0 left-0 w-[100%] h-[100%] bg-[#00000080] z-100">
+                    <div id="factura" class="flex flex-col items-center bg-[#fff] w-[90%]  md:w-[70%] lg:w-[30%] min-h-[50%] p-[20px] my-[100px] mx-auto rounded-md container-items2 border-2 border-black">
+                        <h3 class="font-black text-[1.2rem]">FACTURA</h3>
+                        <p class="font-semibold text-[1.1rem]">Local: Tiendas <span class="font-bold text-[1.1rem]">TIGO</span></p>
+                        <p class="font-normal text-[1.1rem]">RIF: J-10256520-2</p>
+                        <p class="font-normal text-[1rem]">Domicilio Fiscal</p>
+                        <div class="flex w-[80%] justify-between">
+                            <span id="fechaFactura">fecha</span>
+                            <span id="horaFactura">hora</span>
+                        </div>
+                        <div class="flex justify-between w-[80%]">
+                            <p>Factura N°</p>
+                            <p id="numeroFactura" class="justify-self-end">001</p>
+                        </div>
+                        <div class="flex justify-between w-[80%]">
+                            <p class="text-[.9rem]">Producto</p>
+                            <p class="text-[.9rem]">Cant.</p>
+                            <p class="text-[.9rem]">Monto</p>
+                        </div>
+                        <div class="rowProduct2 w-[80%] min-h-[80%] ">
+                            <div class="cart-product2 w-[100%] justify-between">
+                            </div>
+                        </div>
+                        <div class="flex justify-between w-[80%]">
+                            <p class="text-[12px]">Total global</p>
+                            <samp class="text-[12px] font-sans" id="totalGlobalFactura">0</samp>
+                        </div>
+                        <div class="flex justify-between w-[80%]">
+                            <p class="text-[12px]">IVA 16%</p>
+                            <span class="text-[12px] font-sans" id="iva">0</span>
+                        </div>
+                        <div class="flex justify-between w-[80%]">
+                            <p class="text-[12px]">TOTAL</p>
+                            <span class="text-[12px] font-sans" id="totalApagarFactura">0</span>
+                        </div>
+                        <button id="aceptarFactura" class="flex justify-center itens-end text-[1
+                            rem] font-semibold  items-center cursor-pointer rounded-md bg-orange-500 px-[.8rem]  hover:bg-orange-200 hover:text-black hover:shadow-md hover:shadow-orange-900 text-white text-[1.25rem] btn-add-cart mt-[2rem] ">Aceptar</button>
+                    </div>
+                </div>
+                <div id="gracias" class="hidden fixed top-0 left-0 w-[100%] h-[100%] bg-[#00000080] z-100">
+                    <div id="cajaGracias" class="flex items-center bg-[#fff] w-[90%]  md:w-[70%] lg:w-[30%] min-h-[30%] p-[20px] my-[100px] mx-auto rounded-md ">
+                        <p class="text-[1.5rem] font-bold text-center text-orange-500">Gracias por su compra, Tiendas TIGO le desea un feliz día, vuelva pronto.</p>
+                    </div>
                 </div>
             </section>
-            <footer class="flex justify-between items-center px-[2rem] w-[100%] h-[10rem] bg-orange-600  ">
+            <footer class="flex justify-between items-center px-[2rem] w-[100%] h-[10rem] bg-orange-600  z-100">
                 <div></div>
                 <div id="reloj" class="flex justify-center items-center text-orange-200 text-[1.5rem] w-[200px] h-[50px] border-2 border-orange-200 border-solid "></div>
             </footer>
