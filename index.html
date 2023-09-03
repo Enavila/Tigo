@@ -117,7 +117,7 @@
         </header>
         <main>
             <section  class="w-[100%]  mt-[11vh] inicio  flex flex-col ">
-                <article id="carrusel" class="  carrusel mt-6  min-[420px]:mt-[3.1vh]">
+                <article id="carrusel" class="  carrusel mt-6  min-[420px]:mt-[3vh] 2xl:mt-[-2vh]">
                     <div class="swiper w-[100%]   mySwiper   mx-auto" >
                         <div class="swiper-wrapper">
                             <div class="swiper-slide text-center text-[18px] bg-white flex justify-center items-center"><img class="block  object-cover" src="./img/fabuloso-0623.jpg" alt=""></div>
@@ -156,7 +156,7 @@
                 </div>
             </section>
             <div id="ventanaEmergenteInicio" class="hidden fixed top-0 left-0 w-[100%] h-[100%] bg-[#00000080] z-100">
-            <div class="flex flex-col bg-[#fff] w-[90%] md:w-[70%] lg:w-[50%] h-[50%] p-[20px] my-[100px] mx-auto rounded-md container-items">
+            <div class="flex flex-col bg-[#fff] w-[90%] md:w-[70%] lg:w-[50%] h-[50%] p-[20px] my-[100px] mx-auto rounded-md container-items overflow-y-scroll scroll ">
                 <div class="flex justify-between items-center h-[10%] nombreProductoVent">
                     <span id="nombreProductoVentanaEmergenteInicio" class="text-red-600 text-[2rem] font-bold"></span>
                     <button onclick="cerrarVentanaEmergenteProducto()" class="text-white font-extrabold cursor-pointer rounded-md bg-orange-500 px-[.8rem] py-[.4rem] hover:bg-orange-200 hover:text-black hover:shadow-md hover:shadow-orange-900 text-white text-[1.25rem] ">X</button>
@@ -255,13 +255,11 @@
                 <div id="reloj" class="flex justify-center items-center text-orange-200 text-[1.5rem] w-[200px] h-[50px] border-2 border-orange-200 border-solid "></div>
             </footer>
         </main>
-
         <script src="ventanasEmer.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script> 
         <script src="index.js"></script>
         <script src="productos.js"></script> 
         <script src="carrito.js"></script>
         <script src="reloj.js"></script>
-
     </body>
 </html>
